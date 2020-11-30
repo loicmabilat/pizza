@@ -10,8 +10,8 @@
         <header><h1>pizza</h1></header>
     
 <table>
-    <tr>
-        <td><div class="pizza">reine : tomate...............................</div> </td>
+    <tr class="mapizza">
+        <td><div class="pizza">reine : tomate.</div> </td>
         <td><div class="prixUnite">8</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -20,8 +20,9 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">reine blanche:.............................</div> </td>
+
+    <tr class="mapizza">
+        <td><div class="pizza">reine blanche:...</div> </td>
         <td><div class="prixUnite">8</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -30,8 +31,9 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">napolitaine : tomate...............................</div> </td>
+    
+    <tr class="mapizza">
+        <td><div class="pizza">napolitaine : tomate.</div> </td>
         <td><div class="prixUnite">9</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -40,8 +42,8 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">estoril........................</div> </td>
+    <tr class="mapizza">
+        <td><div class="pizza">estoril...</div> </td>
         <td><div class="prixUnite">10</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -50,8 +52,9 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">aubergine........................</div> </td>
+    
+    <tr class="mapizza">
+        <td><div class="pizza">aubergine..</div> </td>
         <td><div class="prixUnite">11</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -60,8 +63,8 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">royale........................</div> </td>
+    <tr class="mapizza">
+        <td><div class="pizza">royale..</div> </td>
         <td><div class="prixUnite">11</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -70,8 +73,8 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
-    <tr>
-        <td><div class="pizza">la speciale........................</div> </td>
+    <tr class="mapizza">
+        <td><div class="pizza">la speciale..</div> </td>
         <td><div class="prixUnite">12</div></td>
         <td><button class="retrait">-</button></td>
         <td><div class="qtt">0</div></td>
@@ -80,13 +83,55 @@
         <td><div class="prix">0</div></td>
         <td>€</td>
     </tr>
+    
+
     <tr>
         <td>
         <div class ="total">0</div>
         </td>
     </tr>
     </table>
+<div class="summarize"></div>
+<div class="commande"> 
+<button>payer la commande par paypal ou cb ==></button>
+
+<div id="smart-button-container">
+      <div style="text-align: center;">
+        <div id="paypal-button-container"></div>
+      </div>
+    </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+  <script>
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal',
+        },
+
+        createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+        });
+        },
+
+        onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        });
+        },
+
+        onError: function(err) {
+        console.log(err);
+        }
+    }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+</script>
+</div>
     
-    <script src="pizza.js" ></script>
     </body>
+    <script src="pizza.js" ></script>
     </html>

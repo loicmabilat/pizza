@@ -1,0 +1,11 @@
+
+.commande{
+  visibility :hidden;
+}
+.paye.commande{
+  visibility : visible;
+}
+.summarize{
+  border : 2px solid black;
+  height :30px;
+}
