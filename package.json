@@ -2,10 +2,9 @@
   "name": "pizza",
   "version": "1.0.0",
   "main": "pizza.js",
-  "dependencies": {
-    "cypress": "^6.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "cypress": "^6.0.1",
     "netlify-plugin-cypress": "^1.4.1"
   },
   "scripts": {
